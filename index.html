@@ -1,1 +1,280 @@
 <h1>Fã número 1 do Neymar e Messi</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CuboMaster - Loja de Cubos Mágicos</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#ff6b35,#ff9f1c);
+    color:white;
+    padding:20px 10%;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:50px 10%;
+    background:white;
+}
+
+.hero-text{
+    max-width:550px;
+}
+
+.hero h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:1.1rem;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.btn{
+    display:inline-block;
+    background:#ff6b35;
+    color:white;
+    padding:15px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#e85d2d;
+}
+
+.hero img{
+    width:400px;
+    max-width:100%;
+}
+
+.produtos{
+    padding:80px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.2rem;
+    margin-bottom:50px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.preco{
+    color:#ff6b35;
+    font-size:1.4rem;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.sobre{
+    background:white;
+    padding:80px 10%;
+    text-align:center;
+}
+
+.sobre p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.cta{
+    background:linear-gradient(135deg,#ff6b35,#ff9f1c);
+    color:white;
+    text-align:center;
+    padding:80px 10%;
+}
+
+.cta h2{
+    margin-bottom:20px;
+    font-size:2.5rem;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+@media(max-width:768px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        gap:40px;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:2.2rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">🧩 CuboMaster</div>
+
+        <ul>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Os Melhores Cubos Mágicos para Speedcubing</h1>
+        <p>
+            Encontre cubos profissionais, acessórios e novidades das melhores marcas.
+            Melhore seus tempos e leve sua performance para o próximo nível.
+        </p>
+
+        <a href="#produtos" class="btn">Ver Produtos</a>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800" alt="Cubo Mágico">
+</section>
+
+<section class="produtos" id="produtos">
+    <h2 class="section-title">Produtos em Destaque</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=800" alt="">
+            <div class="card-content">
+                <h3>Cubo 3x3 Profissional</h3>
+                <p>Alta velocidade e excelente estabilidade.</p>
+                <div class="preco">R$ 69,90</div>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1624378439795-c3f276f4e5a2?w=800" alt="">
+            <div class="card-content">
+                <h3>Cubo 2x2 Speed</h3>
+                <p>Leve, rápido e ideal para competições.</p>
+                <div class="preco">R$ 39,90</div>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1624378439437-b5cc34e65e07?w=800" alt="">
+            <div class="card-content">
+                <h3>Megaminx Premium</h3>
+                <p>Desafio avançado para cubistas experientes.</p>
+                <div class="preco">R$ 119,90</div>
+                <a href="#" class="btn">Comprar</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="sobre" id="sobre">
+    <h2 class="section-title">Sobre a CuboMaster</h2>
+
+    <p>
+        Somos especializados em cubos mágicos para iniciantes, entusiastas e
+        competidores profissionais. Trabalhamos com produtos de alta qualidade,
+        entrega rápida e suporte especializado para ajudar você a evoluir no speedcubing.
+    </p>
+</section>
+
+<section class="cta" id="contato">
+    <h2>Pronto para bater seu recorde?</h2>
+    <p>Confira nossa coleção completa e encontre o cubo ideal para você.</p>
+    <br>
+    <a href="#" class="btn">Comprar Agora</a>
+</section>
+
+<footer>
+    <p>© 2026 CuboMaster - Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
