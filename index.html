@@ -3,519 +3,849 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NOVA Commerce</title>
+<title>CubeVerse - Loja Premium de Cubos Mágicos</title>
 
 <style>
 :root{
-    --bg:#050816;
-    --card:rgba(255,255,255,.05);
-    --glass:rgba(255,255,255,.08);
-    --text:#fff;
-    --primary:#5B8CFF;
-    --secondary:#8B5CF6;
-    --success:#22C55E;
+--bg:#050816;
+--bg2:#0b1022;
+--card:rgba(255,255,255,.06);
+--glass:rgba(255,255,255,.08);
+--text:#fff;
+--primary:#4F8CFF;
+--secondary:#8B5CF6;
+--accent:#00E5FF;
+--success:#00D084;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Inter,system-ui,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,Segoe UI,sans-serif;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
-    overflow-x:hidden;
+background:linear-gradient(180deg,#040611,#091126);
+color:white;
+overflow-x:hidden;
 }
 
-/* Background */
+/* BACKGROUND */
 
 .bg{
-    position:fixed;
-    inset:0;
-    z-index:-1;
+position:fixed;
+inset:0;
+z-index:-5;
+overflow:hidden;
 }
 
-.blob{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(120px);
-    animation:float 15s infinite ease-in-out;
+.orb{
+position:absolute;
+border-radius:50%;
+filter:blur(120px);
+animation:float 15s infinite ease-in-out;
 }
 
-.blob:nth-child(1){
-    width:400px;
-    height:400px;
-    background:#2563eb;
-    left:-100px;
-    top:50px;
+.orb:nth-child(1){
+width:500px;
+height:500px;
+background:#2563eb;
+left:-150px;
+top:0;
 }
 
-.blob:nth-child(2){
-    width:350px;
-    height:350px;
-    background:#7c3aed;
-    right:-100px;
-    top:200px;
+.orb:nth-child(2){
+width:400px;
+height:400px;
+background:#9333ea;
+right:-100px;
+top:200px;
+}
+
+.orb:nth-child(3){
+width:300px;
+height:300px;
+background:#00d4ff;
+left:40%;
+bottom:-100px;
 }
 
 @keyframes float{
-    50%{
-        transform:
-        translateY(-50px)
-        translateX(40px);
-    }
+50%{
+transform:translateY(-80px) translateX(60px);
+}
 }
 
-/* Navbar */
+/* NAV */
 
 nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    backdrop-filter:blur(20px);
-    background:rgba(5,8,22,.6);
-    border-bottom:1px solid rgba(255,255,255,.08);
-    z-index:1000;
+position:fixed;
+top:0;
+width:100%;
+z-index:999;
+backdrop-filter:blur(20px);
+background:rgba(5,8,22,.65);
+border-bottom:1px solid rgba(255,255,255,.06);
 }
 
-.nav-container{
-    max-width:1400px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px;
+.nav-wrap{
+max-width:1400px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 24px;
 }
 
 .logo{
-    font-size:1.6rem;
-    font-weight:800;
+font-size:1.8rem;
+font-weight:900;
+letter-spacing:2px;
 }
 
 .logo span{
-    color:var(--primary);
+color:var(--accent);
 }
 
-.links{
-    display:flex;
-    gap:25px;
+.menu{
+display:flex;
+gap:30px;
 }
 
-.links a{
-    color:white;
-    text-decoration:none;
-    opacity:.8;
-    transition:.3s;
+.menu a{
+color:white;
+text-decoration:none;
+opacity:.8;
+transition:.3s;
 }
 
-.links a:hover{
-    opacity:1;
+.menu a:hover{
+opacity:1;
+color:var(--accent);
 }
 
-.cart-btn{
-    border:none;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-    );
-    color:white;
-    padding:12px 20px;
-    border-radius:12px;
-    cursor:pointer;
+.actions{
+display:flex;
+gap:12px;
 }
 
-/* Hero */
+.icon-btn{
+border:none;
+padding:12px 16px;
+border-radius:14px;
+background:var(--glass);
+color:white;
+cursor:pointer;
+}
+
+/* HERO */
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:40px;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 20px 80px;
 }
 
-.hero-content{
-    max-width:900px;
+.hero-grid{
+max-width:1400px;
+width:100%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
 }
 
 .badge{
-    display:inline-block;
-    padding:10px 18px;
-    border-radius:999px;
-    background:var(--glass);
-    backdrop-filter:blur(10px);
-    margin-bottom:25px;
+display:inline-block;
+padding:10px 18px;
+border-radius:999px;
+background:rgba(255,255,255,.08);
+margin-bottom:20px;
 }
 
 .hero h1{
-    font-size:clamp(3rem,8vw,6rem);
-    line-height:1;
+font-size:clamp(3rem,7vw,6rem);
+line-height:1;
+margin-bottom:20px;
 }
 
 .gradient{
-    background:linear-gradient(
-        90deg,
-        #60A5FA,
-        #A855F7
-    );
-    -webkit-background-clip:text;
-    color:transparent;
+background:linear-gradient(90deg,#00E5FF,#7C3AED,#60A5FA);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 .hero p{
-    margin-top:25px;
-    font-size:1.2rem;
-    opacity:.8;
+font-size:1.1rem;
+opacity:.8;
+max-width:600px;
+line-height:1.8;
 }
 
 .hero-buttons{
-    margin-top:35px;
-    display:flex;
-    gap:15px;
-    justify-content:center;
-    flex-wrap:wrap;
+margin-top:30px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
 .btn{
-    padding:16px 30px;
-    border:none;
-    border-radius:14px;
-    cursor:pointer;
-    font-weight:700;
-    transition:.3s;
+border:none;
+cursor:pointer;
+padding:16px 28px;
+border-radius:16px;
+font-weight:700;
+transition:.35s;
 }
 
-.btn-primary{
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-    );
-    color:white;
+.primary{
+background:linear-gradient(135deg,#2563eb,#9333ea);
+color:white;
+}
+
+.secondary{
+background:rgba(255,255,255,.08);
+color:white;
 }
 
 .btn:hover{
-    transform:translateY(-3px);
+transform:translateY(-4px);
 }
 
-/* Products */
+/* CUBE 3D */
 
-.products{
-    max-width:1400px;
-    margin:auto;
-    padding:100px 25px;
+.scene{
+height:500px;
+display:flex;
+justify-content:center;
+align-items:center;
+perspective:1200px;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-    font-size:3rem;
+.cube{
+width:220px;
+height:220px;
+position:relative;
+transform-style:preserve-3d;
+animation:spin 12s infinite linear;
+}
+
+.face{
+position:absolute;
+width:220px;
+height:220px;
+border:6px solid rgba(255,255,255,.2);
+display:grid;
+grid-template-columns:repeat(3,1fr);
+grid-template-rows:repeat(3,1fr);
+gap:4px;
+padding:4px;
+background:black;
+}
+
+.face div{
+border-radius:4px;
+}
+
+.front{transform:translateZ(110px);}
+.back{transform:rotateY(180deg) translateZ(110px);}
+.right{transform:rotateY(90deg) translateZ(110px);}
+.left{transform:rotateY(-90deg) translateZ(110px);}
+.top{transform:rotateX(90deg) translateZ(110px);}
+.bottom{transform:rotateX(-90deg) translateZ(110px);}
+
+@keyframes spin{
+0%{transform:rotateX(-20deg) rotateY(0);}
+100%{transform:rotateX(-20deg) rotateY(360deg);}
+}
+
+.red{background:#ff3b3b}
+.blue{background:#2b7fff}
+.green{background:#00d084}
+.orange{background:#ff8a00}
+.white{background:#fff}
+.yellow{background:#ffd600}
+
+/* PRODUCTS */
+
+.section{
+padding:100px 20px;
+max-width:1400px;
+margin:auto;
+}
+
+.title{
+font-size:3rem;
+text-align:center;
+margin-bottom:20px;
+}
+
+.subtitle{
+text-align:center;
+opacity:.7;
+margin-bottom:60px;
+}
+
+.filters{
+display:flex;
+gap:10px;
+justify-content:center;
+flex-wrap:wrap;
+margin-bottom:40px;
+}
+
+.filter{
+padding:12px 18px;
+border:none;
+cursor:pointer;
+border-radius:999px;
+background:rgba(255,255,255,.08);
+color:white;
+}
+
+.search{
+display:block;
+margin:0 auto 40px;
+width:min(700px,100%);
+padding:18px;
+border-radius:18px;
+border:none;
+background:rgba(255,255,255,.08);
+color:white;
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
 .card{
-    background:var(--card);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:24px;
-    overflow:hidden;
-    transition:.4s;
+background:var(--card);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+overflow:hidden;
+backdrop-filter:blur(20px);
+transition:.45s;
+transform-style:preserve-3d;
 }
 
 .card:hover{
-    transform:
-    translateY(-10px)
-    scale(1.02);
+transform:translateY(-12px) rotateX(4deg);
+box-shadow:0 25px 80px rgba(0,0,0,.4);
 }
 
 .card img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
+width:100%;
+height:240px;
+object-fit:cover;
 }
 
-.content{
-    padding:25px;
+.card-body{
+padding:24px;
 }
 
 .price{
-    color:#60A5FA;
-    font-size:1.4rem;
-    margin:15px 0;
-    font-weight:700;
+font-size:1.4rem;
+font-weight:800;
+color:#60A5FA;
+margin:15px 0;
 }
 
 .buy{
-    width:100%;
-    border:none;
-    padding:14px;
-    border-radius:12px;
-    cursor:pointer;
-    background:
-    linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-    );
-    color:white;
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+color:white;
+font-weight:700;
+cursor:pointer;
 }
 
-/* Cart */
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.stat{
+background:var(--card);
+padding:40px;
+text-align:center;
+border-radius:25px;
+}
+
+.number{
+font-size:3rem;
+font-weight:900;
+color:var(--accent);
+}
+
+/* FAQ */
+
+.faq-item{
+background:var(--card);
+margin-bottom:15px;
+border-radius:18px;
+overflow:hidden;
+}
+
+.question{
+padding:20px;
+cursor:pointer;
+font-weight:700;
+}
+
+.answer{
+max-height:0;
+overflow:hidden;
+transition:.4s;
+padding:0 20px;
+opacity:.8;
+}
+
+.faq-item.active .answer{
+max-height:200px;
+padding:20px;
+}
+
+/* CART */
 
 .cart{
-    position:fixed;
-    right:20px;
-    top:90px;
-    width:350px;
-    max-height:80vh;
-    overflow:auto;
-    background:#0f172a;
-    border-radius:20px;
-    padding:20px;
-    display:none;
+position:fixed;
+right:-420px;
+top:0;
+height:100vh;
+width:400px;
+background:#08101f;
+z-index:2000;
+transition:.5s;
+padding:25px;
+overflow:auto;
+}
+
+.cart.open{
+right:0;
+}
+
+.cart h2{
+margin-bottom:20px;
 }
 
 .cart-item{
-    margin:12px 0;
-    display:flex;
-    justify-content:space-between;
+display:flex;
+justify-content:space-between;
+margin-bottom:15px;
+padding-bottom:15px;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* Reveal */
+.checkout{
+width:100%;
+padding:16px;
+border:none;
+border-radius:14px;
+background:#00d084;
+color:white;
+font-weight:700;
+margin-top:20px;
+}
+
+/* REVEAL */
 
 .reveal{
-    opacity:0;
-    transform:translateY(50px);
-    transition:1s;
+opacity:0;
+transform:translateY(60px);
+transition:1s;
 }
 
-.reveal.active{
-    opacity:1;
-    transform:none;
+.reveal.show{
+opacity:1;
+transform:none;
 }
+
+/* FOOTER */
 
 footer{
-    text-align:center;
-    padding:60px 20px;
-    opacity:.6;
+padding:80px 20px;
+text-align:center;
+opacity:.6;
 }
 
-/* Mobile */
+/* MOBILE */
 
-@media(max-width:768px){
+@media(max-width:900px){
+.hero-grid{
+grid-template-columns:1fr;
+text-align:center;
+}
 
-    .links{
-        display:none;
-    }
+.menu{
+display:none;
+}
 
-    .cart{
-        width:92%;
-        right:4%;
-    }
+.scene{
+height:350px;
+}
+
+.cube{
+transform:scale(.75);
+}
+
+.cart{
+width:100%;
+}
 }
 </style>
 </head>
 <body>
 
 <div class="bg">
-    <div class="blob"></div>
-    <div class="blob"></div>
+<div class="orb"></div>
+<div class="orb"></div>
+<div class="orb"></div>
 </div>
 
 <nav>
-<div class="nav-container">
+<div class="nav-wrap">
 
 <div class="logo">
-NOVA<span>.</span>
+CUBE<span>VERSE</span>
 </div>
 
-<div class="links">
-<a href="#">Home</a>
-<a href="#">Produtos</a>
-<a href="#">Contato</a>
+<div class="menu">
+<a href="#inicio">Início</a>
+<a href="#produtos">Cubos</a>
+<a href="#stats">Números</a>
+<a href="#faq">FAQ</a>
 </div>
 
-<button class="cart-btn" onclick="toggleCart()">
-🛒 <span id="count">0</span>
-</button>
+<div class="actions">
+<button class="icon-btn" onclick="toggleTheme()">🌙</button>
+<button class="icon-btn" onclick="toggleCart()">🛒 <span id="count">0</span></button>
+</div>
 
 </div>
 </nav>
 
-<section class="hero">
+<section class="hero" id="inicio">
 
-<div class="hero-content">
+<div class="hero-grid">
+
+<div>
 
 <div class="badge">
-✨ Plataforma Premium
+🏆 Loja Premium de Speedcubing
 </div>
 
 <h1>
-Tecnologia para o
-<span class="gradient">futuro.</span>
+Cubos mágicos para
+<span class="gradient">
+campeões.
+</span>
 </h1>
 
 <p>
-Experiência moderna, rápida e elegante.
+Gan, MoYu, QiYi, YJ, DaYan e os melhores cubos do mundo com uma experiência moderna, fluida e futurista.
 </p>
 
 <div class="hero-buttons">
-<button class="btn btn-primary">
-Explorar
+<button class="btn primary" onclick="document.getElementById('produtos').scrollIntoView()">
+Explorar Cubos
 </button>
+
+<button class="btn secondary">
+Ver Recordistas
+</button>
+</div>
+
+</div>
+
+<div class="scene">
+
+<div class="cube">
+
+<div class="face front">
+<div class="red"></div><div class="blue"></div><div class="yellow"></div>
+<div class="green"></div><div class="white"></div><div class="orange"></div>
+<div class="blue"></div><div class="red"></div><div class="green"></div>
+</div>
+
+<div class="face back">
+<div class="orange"></div><div class="green"></div><div class="blue"></div>
+<div class="yellow"></div><div class="white"></div><div class="red"></div>
+<div class="green"></div><div class="orange"></div><div class="yellow"></div>
+</div>
+
+<div class="face right"></div>
+<div class="face left"></div>
+<div class="face top"></div>
+<div class="face bottom"></div>
+
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<section class="products reveal">
+<section class="section reveal" id="produtos">
 
-<h2 class="section-title">
-Produtos
-</h2>
+<h2 class="title">Cubos em Destaque</h2>
+<p class="subtitle">Escolha seu próximo recorde pessoal.</p>
 
-<div class="grid">
+<input id="search" class="search" placeholder="Buscar cubo...">
+
+<div class="grid" id="products">
 
 <div class="card">
-<img src="https://picsum.photos/600/400?1">
-<div class="content">
-<h3>Smartphone X</h3>
-<div class="price">R$ 3.999</div>
-<button class="buy"
-onclick="add('Smartphone X',3999)">
-Comprar
-</button>
+<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800">
+<div class="card-body">
+<h3>GAN 14 Maglev</h3>
+<div class="price">R$ 449</div>
+<button class="buy" onclick="addToCart('GAN 14 Maglev',449)">Comprar</button>
 </div>
 </div>
 
 <div class="card">
-<img src="https://picsum.photos/600/400?2">
-<div class="content">
-<h3>Notebook Pro</h3>
-<div class="price">R$ 6.999</div>
-<button class="buy"
-onclick="add('Notebook Pro',6999)">
-Comprar
-</button>
+<img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800">
+<div class="card-body">
+<h3>MoYu WRM V10</h3>
+<div class="price">R$ 269</div>
+<button class="buy" onclick="addToCart('MoYu WRM V10',269)">Comprar</button>
 </div>
 </div>
 
 <div class="card">
-<img src="https://picsum.photos/600/400?3">
-<div class="content">
-<h3>Headset Elite</h3>
-<div class="price">R$ 899</div>
-<button class="buy"
-onclick="add('Headset Elite',899)">
-Comprar
-</button>
+<img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800">
+<div class="card-body">
+<h3>QiYi X-Man Tornado</h3>
+<div class="price">R$ 219</div>
+<button class="buy" onclick="addToCart('QiYi X-Man Tornado',219)">Comprar</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800">
+<div class="card-body">
+<h3>Megaminx Galaxy</h3>
+<div class="price">R$ 189</div>
+<button class="buy" onclick="addToCart('Megaminx Galaxy',189)">Comprar</button>
 </div>
 </div>
 
 </div>
+
+</section>
+
+<section class="section reveal" id="stats">
+
+<h2 class="title">A Comunidade</h2>
+
+<div class="stats">
+
+<div class="stat">
+<div class="number" data-target="50000">0</div>
+<p>Clientes</p>
+</div>
+
+<div class="stat">
+<div class="number" data-target="120000">0</div>
+<p>Pedidos</p>
+</div>
+
+<div class="stat">
+<div class="number" data-target="98">0</div>
+<p>% Satisfação</p>
+</div>
+
+<div class="stat">
+<div class="number" data-target="42">0</div>
+<p>Países</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section reveal" id="faq">
+
+<h2 class="title">FAQ</h2>
+
+<div class="faq-item">
+<div class="question">Qual cubo é melhor para iniciantes?</div>
+<div class="answer">MoYu RS3M ou QiYi M Pro.</div>
+</div>
+
+<div class="faq-item">
+<div class="question">Vocês enviam para todo o Brasil?</div>
+<div class="answer">Sim, com rastreamento.</div>
+</div>
+
+<div class="faq-item">
+<div class="question">Os cubos são magnéticos?</div>
+<div class="answer">A maioria dos modelos premium sim.</div>
+</div>
+
 </section>
 
 <div class="cart" id="cart">
-<h2>Carrinho</h2>
-<div id="items"></div>
+<h2>Seu Carrinho</h2>
+<div id="cartItems"></div>
 <h3>Total: R$ <span id="total">0</span></h3>
+<button class="checkout">Finalizar Compra</button>
 </div>
 
 <footer>
-© 2026 NOVA Commerce
+© 2026 CubeVerse
 </footer>
 
 <script>
-let cart =
-JSON.parse(localStorage.getItem("cart")) || [];
+
+let cart=JSON.parse(localStorage.getItem("cubecart"))||[];
 
 function save(){
- localStorage.setItem(
- "cart",
- JSON.stringify(cart)
- );
+localStorage.setItem("cubecart",JSON.stringify(cart));
 }
 
-function add(name,price){
-
- cart.push({name,price});
-
- render();
- save();
+function addToCart(name,price){
+cart.push({name,price});
+renderCart();
+save();
 }
 
-function render(){
+function renderCart(){
 
- let html='';
- let total=0;
+let html='';
+let total=0;
 
- cart.forEach(item=>{
+cart.forEach(item=>{
+total+=item.price;
 
- total += item.price;
+html+=`
+<div class="cart-item">
+<span>${item.name}</span>
+<b>R$ ${item.price}</b>
+</div>`;
+});
 
- html += `
- <div class="cart-item">
- ${item.name}
- <span>R$ ${item.price}</span>
- </div>
- `;
- });
-
- document.getElementById("items").innerHTML=html;
- document.getElementById("total").innerHTML=
- total.toLocaleString();
-
- document.getElementById("count").innerHTML=
- cart.length;
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("total").innerText=total;
+document.getElementById("count").innerText=cart.length;
 }
 
-render();
+renderCart();
 
 function toggleCart(){
-
- const c =
- document.getElementById("cart");
-
- c.style.display =
- c.style.display==="block"
- ? "none"
- : "block";
+document.getElementById("cart").classList.toggle("open");
 }
 
-const observer =
-new IntersectionObserver(entries=>{
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
 
- entries.forEach(entry=>{
+document.querySelectorAll(".reveal").forEach(el=>{
+observer.observe(el);
+});
 
- if(entry.isIntersecting){
+document.querySelectorAll(".faq-item").forEach(item=>{
+item.addEventListener("click",()=>{
+item.classList.toggle("active");
+});
+});
 
- entry.target.classList.add("active");
+document.querySelectorAll(".number").forEach(counter=>{
 
- }
+let target=+counter.dataset.target;
 
- });
+let update=()=>{
+
+let current=+counter.innerText;
+
+let increment=Math.ceil(target/120);
+
+if(current<target){
+counter.innerText=current+increment;
+requestAnimationFrame(update);
+}else{
+counter.innerText=target;
+}
+
+};
+
+update();
 
 });
 
-document
-.querySelectorAll(".reveal")
-.forEach(el=>observer.observe(el));
+document.getElementById("search").addEventListener("input",e=>{
+
+let value=e.target.value.toLowerCase();
+
+document.querySelectorAll(".card").forEach(card=>{
+
+let title=card.querySelector("h3")
+.innerText.toLowerCase();
+
+card.style.display=
+title.includes(value)
+? "block"
+: "none";
+
+});
+
+});
+
+function toggleTheme(){
+
+if(document.body.style.filter==="invert(1) hue-rotate(180deg)"){
+document.body.style.filter="";
+}else{
+document.body.style.filter="invert(1) hue-rotate(180deg)";
+}
+
+}
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+const rotateY=((x/rect.width)-0.5)*15;
+const rotateX=((y/rect.height)-0.5)*-15;
+
+card.style.transform=
+`perspective(1000px)
+rotateX(${rotateX}deg)
+rotateY(${rotateY}deg)
+translateY(-10px)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+card.style.transform="";
+});
+
+});
+
 </script>
 
 </body>
